@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<!-- saved from url=(0145)https://microsoftlearning.github.io/AZ-900T0x-MicrosoftAzureFundamentals/Instructions/Walkthroughs/03-Deploy%20Azure%20Container%20Instances.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>
+            AZ-900T0x-MicrosoftAzureFundamentals
+        </title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="./AZ-900T0x-MicrosoftAzureFundamentals_files/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="./AZ-900T0x-MicrosoftAzureFundamentals_files/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <link rel="stylesheet" href="./AZ-900T0x-MicrosoftAzureFundamentals_files/vs.min.css">
+        <script src="./AZ-900T0x-MicrosoftAzureFundamentals_files/highlight.min.js.baixados"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <link rel="stylesheet" href="./AZ-900T0x-MicrosoftAzureFundamentals_files/style.css">
+    </head>
+    <body data-spy="scroll" data-target="#linksMenu">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+        <div class="container d-flex justify-content-between">
+            <a class="my-1 title text-azure text-uppercase" href="https://microsoftlearning.github.io/AZ-900T0x-MicrosoftAzureFundamentals">
+                AZ-900T0x-MicrosoftAzureFundamentals
+            </a>
+            <a href="https://github.com/MicrosoftLearning/AZ-900T0x-MicrosoftAzureFundamentals" target="_blank" class="btn btn-sm btn-outline-secondary text-light">
+                <i class="fa fa-github" aria-hidden="true"></i>
+                <span class="ml-2">GitHub</span>
+            </a>
+        </div>
+    </nav>
+    <div class="container">
+        <main class="row extra-padding">
+            <aside class="col-sm-2">       
+                <nav id="linksMenu" class="toc sticky-top">
+                    <ul class="nav navbar-nav flex-column">
+                    </ul>
+                </nav>         
+            </aside>
+            <hr class="">
+            <article class="col-sm-10 mb-5">
+                <h1 id="03---deploy-azure-container-instances-10-min">03 - Deploy Azure Container Instances (10 min)</h1>
+
+<p>In this walkthrough we create, configure, and deploy a container by using Azure Container Instances (ACI) in the Azure Portal. The container is a Welcome to ACI web application that displays a static HTML page.</p>
+
+<h1 id="task-1-create-a-container-instance">Task 1: Create a container instance</h1>
+
+<p>In this task, we will create a new container instance for the web application.</p>
+
+<ol>
+  <li>
+    <p>Sign in to the <a href="https://portal.azure.com/">Azure portal</a>.</p>
+  </li>
+  <li>
+    <p>From the <strong>All services</strong> blade, search for and select <strong>Container instances</strong> and then click <strong>+ Add, + Create, + New</strong>.</p>
+  </li>
+  <li>
+    <p>Provide the following Basic details for the new container instance  (leave the defaults for everything else)):</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Setting</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Subscription</td>
+          <td><strong><em>Use default supplied</em></strong></td>
+        </tr>
+        <tr>
+          <td>Resource group</td>
+          <td><strong>Create new resource group</strong></td>
+        </tr>
+        <tr>
+          <td>Container name</td>
+          <td><strong>mycontainer</strong></td>
+        </tr>
+        <tr>
+          <td>Region</td>
+          <td><strong>(US) East US</strong></td>
+        </tr>
+        <tr>
+          <td>Image source</td>
+          <td><strong>Docker Hub or other registry</strong></td>
+        </tr>
+        <tr>
+          <td>Image type</td>
+          <td><strong>Public</strong></td>
+        </tr>
+        <tr>
+          <td>Image</td>
+          <td><strong>mcr.microsoft.com/azuredocs/aci-helloworld</strong></td>
+        </tr>
+        <tr>
+          <td>OS type</td>
+          <td><strong>Linux</strong></td>
+        </tr>
+        <tr>
+          <td>Size</td>
+          <td><strong><em>Leave at the default</em></strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p>Configure the Networking tab (replace <strong>xxxxx</strong> with letters and digits such that the name is globally unique). Leave all other settings at their default values.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Setting</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>DNS name label</td>
+          <td><strong>mycontainerdnsxxxxx</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>Note</strong>: Your container will be publicly reachable at dns-name-label.region.azurecontainer.io. If you receive a <strong>DNS name label not available</strong> error message following the deployment, specify a different DNS name label (replacing the xxxxx) and re-deploy.</p>
+  </li>
+  <li>
+    <p>Click <strong>Review and Create</strong> to start the automatic validation process.</p>
+  </li>
+  <li>
+    <p>Click <strong>Create</strong> to create the container instance.</p>
+  </li>
+  <li>
+    <p>Monitor the deployment page and the <strong>Notifications</strong> page.</p>
+  </li>
+</ol>
+
+<h1 id="task-2-verify-deployment-of-the-container-instance">Task 2: Verify deployment of the container instance</h1>
+
+<p>In this task, we verify that the container instance is running by ensuring that the welcome page displays.</p>
+
+<ol>
+  <li>
+    <p>After the deployment is complete, click the <strong>Go to resource</strong> link the deployment blade or the link to the resource in the Notification area.</p>
+  </li>
+  <li>
+    <p>On the <strong>Overview</strong> blade of <strong>mycontainer</strong>, ensure your container <strong>Status</strong> is <strong>Running</strong>.</p>
+  </li>
+  <li>
+    <p>Locate the Fully Qualified Domain Name (FQDN).</p>
+
+    <p><a href="./AZ-900T0x-MicrosoftAzureFundamentals_files/0202.png" target="_blank"><img src="./AZ-900T0x-MicrosoftAzureFundamentals_files/0202.png" alt="Screenshot of the overview pane for the newly created container in Azure portal, with the FQDN highlighted. "></a></p>
+  </li>
+  <li>
+    <p>Copy the container’s FQDN into a new web browser tab and press <strong>Enter</strong>. The Welcome page should display.</p>
+
+    <p><a href="./AZ-900T0x-MicrosoftAzureFundamentals_files/0203.png" target="_blank"><img src="./AZ-900T0x-MicrosoftAzureFundamentals_files/0203.png" alt="Screenshot of the ACI welcome message shown in a web browser."></a></p>
+  </li>
+</ol>
+
+<p><strong>Congratulations!</strong> You have used Azure Portal to successfully deploy an application to a container in Azure Container Instances.</p>
+
+<p><strong>Note</strong>: To avoid additional costs, you can optionally remove this resource group. Search for resource groups, click your resource group, and then click <strong>Delete resource group</strong>. Verify the name of the resource group and then click <strong>Delete</strong>. Monitor the <strong>Notifications</strong> to see how the delete is proceeding.</p>
+
+            </article>
+        </main>
+    </div>
+    <footer class="fixed-bottom d-print-none">
+        <nav class="navbar navbar-light bg-light d-flex justify-content-around">
+            <span class="navbar-text">
+                <i class="fa fa-github" aria-hidden="true"></i>
+                <a href="https://github.com/MicrosoftLearning/AZ-900T0x-MicrosoftAzureFundamentals" target="_blank" class="ml-2">
+                    MicrosoftLearning/AZ-900T0x-MicrosoftAzureFundamentals
+                </a>
+            </span>
+        </nav>
+    </footer>
+    <script src="./AZ-900T0x-MicrosoftAzureFundamentals_files/jquery-3.2.1.slim.min.js.baixados" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="./AZ-900T0x-MicrosoftAzureFundamentals_files/popper.min.js.baixados" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="./AZ-900T0x-MicrosoftAzureFundamentals_files/bootstrap.min.js.baixados" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="./AZ-900T0x-MicrosoftAzureFundamentals_files/clipboard.min.js.baixados"></script>
+    <script src="./AZ-900T0x-MicrosoftAzureFundamentals_files/highlight.min.js.baixados"></script>
+    <script src="./AZ-900T0x-MicrosoftAzureFundamentals_files/script.js.baixados"></script>
+
+
+
+</body></html>
